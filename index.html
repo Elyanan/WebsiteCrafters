@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      try {
+        if (localStorage.getItem('language') === 'am') document.documentElement.lang = 'am';
+      } catch (e) {}
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Crafters - Web Development Company</title>
+    <meta name="description" content="Web Crafters - Professional web development company creating beautiful, modern, and responsive websites. Expert developers crafting digital experiences." />
+    <meta name="author" content="Web Crafters" />
+
+    <meta property="og:title" content="Web Crafters - Modern Web Development Company" />
+    <meta property="og:description" content="Professional web development company creating beautiful, modern, and responsive websites. Expert developers crafting digital experiences." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/src/assets/og_image.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@webcrafters" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
