@@ -9,8 +9,9 @@ import project2img from '../assets/Portfolio/project_2.png';
 import project3img from '../assets/Portfolio/project_3.png';
 import project4img from '../assets/Portfolio/project_4.png';
 import project5img from '../assets/Portfolio/project_5.jpg';
+import project6img from '../assets/Portfolio/project_6.png';
 
-type ProjectId = 'yeneta' | 'ambivox' | 'typing' | 'sunset' | 'swift';
+type ProjectId = 'yanis' | 'yeneta' | 'ambivox' | 'typing' | 'sunset' | 'swift';
 
 interface ProjectConfig {
   id: ProjectId;
@@ -18,9 +19,17 @@ interface ProjectConfig {
   tech: string[];
   live?: string;
   isMobile?: boolean;
+  imageAspect?: string;
 }
 
 const projectConfigs: ProjectConfig[] = [
+  {
+    id: 'yanis',
+    image: project6img,
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Sanity CMS', 'Vercel'],
+    live: 'https://yanisblessings.com',
+    imageAspect: 'aspect-[1920/914]',
+  },
   {
     id: 'yeneta',
     image: project1img,
@@ -38,6 +47,7 @@ const projectConfigs: ProjectConfig[] = [
     image: project3img,
     tech: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
     live: 'https://typingspeed.websitecrafters.net/',
+    imageAspect: 'aspect-[1902/912]',
   },
   {
     id: 'sunset',
@@ -85,13 +95,13 @@ const PortfolioCard = ({
       ref={ref}
       className={cn('premium-card group overflow-hidden flex flex-col h-full', `stagger-${Math.min(index + 1, 5)}`)}
     >
-      <div className="relative overflow-hidden aspect-[16/10] bg-muted">
+      <div className={cn('relative overflow-hidden bg-muted', config.imageAspect ?? 'aspect-[16/10]')}>
         {config.image ? (
           <>
             <img
               src={config.image}
               alt={content.title}
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

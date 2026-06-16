@@ -135,6 +135,12 @@ const en = {
     viewLive: 'View Live',
     mobileApp: 'Mobile App',
     projects: {
+      yanis: {
+        title: "Yani's Blessings",
+        category: 'Bakery & E-Commerce Website',
+        description:
+          'A bakery website with product menu, shopping cart, custom orders, and English/Amharic support.',
+      },
       yeneta: {
         title: 'Yeneta Academy',
         category: 'School Website & Student Portal',
@@ -257,6 +263,11 @@ const en = {
     title: 'What Our Clients Say',
     description: 'Short notes from people we\'ve worked with.',
     items: [
+      {
+        name: "Yani's Blessings",
+        company: "Yani's Blessings Bakery",
+        text: 'Our new website looks beautiful and makes ordering so much easier for our customers. The admin dashboard lets us manage products and orders without any hassle. Elyanan understood exactly what a small bakery needs.',
+      },
       {
         name: 'Ambivox Team',
         company: 'Ambivox',
@@ -414,6 +425,12 @@ const am: DeepString<typeof en> = {
     viewLive: 'ቀጥታ ይመልከቱ',
     mobileApp: 'ሞባይል መተግበሪያ',
     projects: {
+      yanis: {
+        title: "Yani's Blessings",
+        category: 'የቤከሪ እና ኢ-ኮሜርስ ድር ገጽ',
+        description:
+          'የምርት ምናሌ፣ የግዢ ባላይ፣ ብጁ ትዕዛዞች እና የእንግሊዝኛ/አማርኛ ድጋፍ ያለው የቤከሪ ጣቢያ።',
+      },
       yeneta: {
         title: 'የኔታ አካዳሚ',
         category: 'የትምህርት ቤት ጣቢያ እና የተማሪ መግቢያ',
@@ -536,6 +553,11 @@ const am: DeepString<typeof en> = {
     title: 'ደንበኞቻችን ምን ይላሉ',
     description: 'ከሰራንባቸው ሰዎች አጭር ማስታወሻዎች።',
     items: [
+      {
+        name: "Yani's Blessings",
+        company: "Yani's Blessings Bakery",
+        text: 'አዲሱ ድር ገጻችን ተወዳጅ ነው እና ለደንበኞቻችን ትዕዛዝ መስጠትን ቀላል አድርጓል። አስተዳደር ዳሽቦርዱም ምርቶችንና ትዕዛዞችን ሳንቸግር ለማስተዳደር ያስችለናል። ለትንሽ ቤከሪ ምን እንደሚፈልግ ኤልያናን በትክክል ተረድቷል።',
+      },
       {
         name: 'የአምቪቮክስ ቡድን',
         company: 'አምቪቮክስ',
