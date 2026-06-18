@@ -4,18 +4,33 @@ import SectionHeader from '@/components/SectionHeader';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from '@/components/ui/carousel';
 import project1img from '../assets/Portfolio/project_1.png';
 import project2img from '../assets/Portfolio/project_2.png';
 import project3img from '../assets/Portfolio/project_3.png';
 import project4img from '../assets/Portfolio/project_4.png';
 import project5img from '../assets/Portfolio/project_5.jpg';
 import project6img from '../assets/Portfolio/project_6.png';
+import project6AdminImg from '../assets/Portfolio/project_6_admin.png';
 
 type ProjectId = 'yanis' | 'yeneta' | 'ambivox' | 'typing' | 'sunset' | 'swift';
+
+interface ProjectSlide {
+  image: string;
+  label?: string;
+}
 
 interface ProjectConfig {
   id: ProjectId;
   image?: string;
+  slides?: ProjectSlide[];
   tech: string[];
   live?: string;
   isMobile?: boolean;
@@ -25,7 +40,10 @@ interface ProjectConfig {
 const projectConfigs: ProjectConfig[] = [
   {
     id: 'yanis',
-    image: project6img,
+    slides: [
+      { image: project6img},
+      { image: project6AdminImg },
+    ],
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Sanity CMS', 'Vercel'],
     live: 'https://yanisblessings.com',
     imageAspect: 'aspect-[1920/914]',
@@ -63,6 +81,73 @@ const projectConfigs: ProjectConfig[] = [
   },
 ];
 
+const ProjectImageCarousel = ({
+  slides,
+  title,
+}: {
+  slides: ProjectSlide[];
+  title: string;
+}) => {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    onSelect();
+    api.on('select', onSelect);
+
+    return () => {
+      api.off('select', onSelect);
+    };
+  }, [api]);
+
+  return (
+    <Carousel setApi={setApi} opts={{ loop: true }} className="absolute inset-0">
+      <CarouselContent className="ml-0 h-full">
+        {slides.map((slide, index) => (
+          <CarouselItem key={slide.label ?? index} className="pl-0 basis-full h-full">
+            <img
+              src={slide.image}
+              alt={slide.label ? `${title} — ${slide.label}` : title}
+              className="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
+            {slide.label && (
+              <span className="absolute top-4 left-4 px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-card/90 text-foreground backdrop-blur-sm border border-border/50">
+                {slide.label}
+              </span>
+            )}
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious
+        variant="secondary"
+        className="left-2 h-8 w-8 border-0 bg-card/90 backdrop-blur-sm shadow-md"
+      />
+      <CarouselNext
+        variant="secondary"
+        className="right-2 h-8 w-8 border-0 bg-card/90 backdrop-blur-sm shadow-md"
+      />
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.label ?? index}
+            type="button"
+            aria-label={slide.label ? `Go to ${slide.label}` : `Go to slide ${index + 1}`}
+            onClick={() => api?.scrollTo(index)}
+            className={cn(
+              'h-1.5 rounded-full transition-all duration-300',
+              index === current ? 'w-4 bg-primary' : 'w-1.5 bg-foreground/40 hover:bg-foreground/60'
+            )}
+          />
+        ))}
+      </div>
+    </Carousel>
+  );
+};
+
 const MobileAppPlaceholder = ({ label }: { label: string }) => (
   <div className="w-full h-full min-h-[220px] flex items-center justify-center bg-gradient-to-br from-[#02569B]/20 via-[#13B9FD]/15 to-primary/10 relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.15),transparent_50%)]" />
@@ -96,7 +181,12 @@ const PortfolioCard = ({
       className={cn('premium-card group overflow-hidden flex flex-col h-full', `stagger-${Math.min(index + 1, 5)}`)}
     >
       <div className={cn('relative overflow-hidden bg-muted', config.imageAspect ?? 'aspect-[16/10]')}>
-        {config.image ? (
+        {config.slides ? (
+          <>
+            <ProjectImageCarousel slides={config.slides} title={content.title} />
+            <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          </>
+        ) : config.image ? (
           <>
             <img
               src={config.image}

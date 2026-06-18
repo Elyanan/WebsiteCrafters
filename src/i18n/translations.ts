@@ -139,7 +139,7 @@ const en = {
         title: "Yani's Blessings",
         category: 'Bakery & E-Commerce Website',
         description:
-          'A bakery website with product menu, shopping cart, custom orders, and English/Amharic support.',
+          'Bakery e-commerce with menu, cart, custom orders, and bilingual support. Admin panel covers menu editing, orders (email alerts), revenue tracking, and site-wide image management.',
       },
       yeneta: {
         title: 'Yeneta Academy',
@@ -429,7 +429,7 @@ const am: DeepString<typeof en> = {
         title: "Yani's Blessings",
         category: 'የቤከሪ እና ኢ-ኮሜርስ ድር ገጽ',
         description:
-          'የምርት ምናሌ፣ የግዢ ባላይ፣ ብጁ ትዕዛዞች እና የእንግሊዝኛ/አማርኛ ድጋፍ ያለው የቤከሪ ጣቢያ።',
+          'የምርት ምናሌ፣ ባላይ ግዢ፣ ብጁ ትዕዛዞች እና የቋንቋ ድጋፍ ያለው የቤከሪ ኢ-ኮሜርስ። የአስተዳደር ፓነል ምናሌ አስተዳደር፣ ትዕዛዞች (ኢሜይል ማስታወቂያ)፣ ገቢ መከታተያ እና የጣቢያ ምስል ማስተዳደር ያካትታል።',
       },
       yeneta: {
         title: 'የኔታ አካዳሚ',
