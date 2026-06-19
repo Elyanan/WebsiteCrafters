@@ -19,7 +19,7 @@ const TestimonyCard = ({
       ref={ref}
       className={`premium-card p-8 md:p-10 flex flex-col relative overflow-hidden stagger-${Math.min(index + 1, 5)}`}
     >
-      <Quote className="absolute top-6 right-6 text-primary/10" size={64} />
+      <Quote className="absolute top-6 right-6 text-primarP/10" size={64} />
       <div className="flex items-center gap-1 mb-5 relative z-10">
         {[...Array(5)].map((_, i) => (
           <Star

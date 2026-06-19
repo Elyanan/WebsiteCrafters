@@ -266,7 +266,7 @@ const en = {
       {
         name: "Yani's Blessings",
         company: "Yani's Blessings Bakery",
-        text: 'Our new website looks beautiful and makes ordering so much easier for our customers. The admin dashboard lets us manage products and orders without any hassle. Elyanan understood exactly what a small bakery needs.',
+        text: 'Working with Website Crafters was straightforward. They understood exactly what we needed, delivered quickly, and created a website that truly elevated our brand. We\'d gladly work with them again.',
       },
       {
         name: 'Ambivox Team',
